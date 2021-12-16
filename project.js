@@ -2,22 +2,22 @@
 
 const getOutput = document.querySelector("#getOutput");
 
-document.querySelector("#deleteForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+// document.querySelector("#deleteForm").addEventListener("submit", function(event) {
+//     event.preventDefault();
 
-    const form = this;
+//     const form = this;
 
-    const guestId = form.guestId.value;
-    axios
-        .delete(`http://localhost:8080/guest/deleteGuest/${guestId}`)
-        .then(res => {
-            console.log(res);
-            form.reset();
-            form.guestId.focus();
-            getGuests();
-        })
-        .catch(err => console.error(err));
-});
+//     const guestId = form.guestId.value;
+//     axios
+//         .delete(`http://localhost:8080/guest/deleteGuest/${guestId}`)
+//         .then(res => {
+//             console.log(res);
+//             form.reset();
+//             form.guestId.focus();
+//             getGuests();
+//         })
+//         .catch(err => console.error(err));
+// });
 
 
 document.querySelector("#guestForm").addEventListener("submit", function(event) {
@@ -29,16 +29,16 @@ document.querySelector("#guestForm").addEventListener("submit", function(event) 
   
 
     const data = {
-        firstName: form.first.name.value,
-        lastName: form.last.name.value,
-        tableNumber: form.table.number.value,
+        firstName: form.firstName.value,
+        lastName: form.lastName.value,
+        tableNumber: form.tableNumber.value,
       
     };
 
     console.log("DATA: ", data);
 
     axios
-        .post("http://localhost:8080/guest/createGuest", data)
+        .post("http://localhost:8080/create", data)
         .then(res => {
             getGuests();
             form.reset(); 
@@ -49,7 +49,7 @@ document.querySelector("#guestForm").addEventListener("submit", function(event) 
 
 const getGuests = () => {
     axios
-        .get("http://localhost:8080/guest/getAll")
+        .get("http://localhost:8080/getAll")
         .then(res => {
             console.log(res);
             const guests = res.data;
@@ -72,13 +72,13 @@ const getGuests = () => {
 
                 const guestLastName = document.createElement("p");
                 guestLastName.classList.add("card-text");
-                guestLasttName.innerText = guest.lastName;
-                guestBody.appendChild(guestLastname);
+                guestLastName.innerText = guest.lastName;
+                guestBody.appendChild(guestLastName);
 
             
                 const guestTableNumber = document.createElement("p");
                 guestTableNumber.classList.add("card-text");
-                guestTableNumber.innerText = guest.tableNumber`;
+                guestTableNumber.innerText = guest.tableNumber;
                 guestBody.appendChild(guestTableNumber);
 
                 const guestDelete = document.createElement("button");
@@ -86,7 +86,7 @@ const getGuests = () => {
                 guestDelete.classList.add("btn", "btn-danger");
                 guestDelete.addEventListener("click", () => {
                     axios
-                        .delete
+                        .delete("http://localhost:8080/remove/"+ guest.id)
                         .then(res => getGuests())
                         .catch(err => console.error(err))
                 });
@@ -98,4 +98,4 @@ const getGuests = () => {
             }
         })
         .catch(err => console.error(err));
-    
+}
