@@ -10,7 +10,7 @@ The project brief was to create a Spring back-end using CRUD functionality and i
 
 Project Management: Clear documentation from a design phase, an expanded Jira board and code integrated into a Version Control System.
 
-Databases: MySQL database and connected h2 databasewith full functionality.
+Databases: MySQL database and connected h2 database with full functionality.
 
 Java and Spring Boot: Functional application created in OOP language.
 
