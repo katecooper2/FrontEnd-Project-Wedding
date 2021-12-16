@@ -13,37 +13,27 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<body>
-    .alpha { color: $red-800; }
-.beta {
-  color: $teal-300;
-  background-color: $yellow-200;
-}
+<body style="background-color:powderblue">
+
     <main>
-        .alpha { color: $red-800; }
-.beta {
-  color: $teal-300;
-  background-color: $yellow-200;
-}
-        <h2>
-             Wedding Guest List
-        </h2>
+
+        <h1 style="border:2px solid Violet;">Wedding Guest List</h1>
         <div class = "GuestContainer">
             <div class="row align-items-start">
                 <div class="col">
                  
         </div>
-        <form>
+        <form id=guestForm>
         <button type = "listGuests">List Guests</button>
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control" placeholder="First Name" aria-label="First Name">
+              <input type="text" class="form-control" placeholder="First Name" aria-label="First Name" name= firstName>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name">
+              <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name" name=lastName>
             </div>
             <div class="col">
-              <input type="integer" class="form-control" placeholder="Table Number" aria-label="Table Number">
+              <input type="integer" class="form-control" placeholder="Table Number" aria-label="Table Number" name=tableNumber>
             </div>
           </div>
     
@@ -56,6 +46,7 @@
             <button type="remove">Remove</button>
             <button type="add">Add</button>
         </form>
+        <div id=getOutput></div>
     </main>
     <script src="project.js"></script>
     
